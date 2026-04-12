@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ricky Alpha Training — Elite Fitness Coaching | Transformación Visual</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* RESET & BASE */
+:root{
+  --bg-1:#1A1A1A;
+  --bg-2:#121212;
+  --surface: rgba(255,255,255,0.06);
+  --muted:#d1d1d1;
+  --text:#ffffff;
+  --accent:#FF5500; /* vibrant orange for action */
+  --accent-2:#ff7a33;
+  --accent-blue:#4ba3ff; /* trust, security, professionalism */
+  --accent-green:#39b673; /* health, growth, wellness */
+  --accent-red:#ff5858; /* urgency and passion */
+  --danger:#ff4747;
+  --glass: rgba(255,255,255,0.08);
+  --radius:18px;
+  --max-width:1200px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,Arial,sans-serif;
+  background-color: var(--bg-1);
+  background-image:
+    radial-gradient(circle at top center, rgba(255,85,0,0.08), transparent 22%),
+    radial-gradient(circle at 15% 8%, rgba(74,163,255,0.12), transparent 18%),
+    radial-gradient(circle at 85% 18%, rgba(57,182,115,0.08), transparent 20%),
+    linear-gradient(180deg, #101010 0%, #1A1A1A 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(120deg, rgba(255,255,255,0.03), transparent 35%),
+              radial-gradient(circle at 20% 10%, rgba(255,255,255,0.08), transparent 12%);
+  opacity:0.55;
+  mix-blend-mode:screen;
+}
+
+/* CONTAINER */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:28px;
+}
+
+/* NAV / HEADER */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  color:inherit;
+  position: relative;
+}
+/* Logo container with centered upload area */
+.logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+}
+.logo-wrap{
+  width:72px; 
+  height:72px;
+  border-radius:16px;
+  background:linear-gradient(135deg, rgba(201,154,59,0.18), rgba(255,217,122,0.04));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+.logo-wrap:hover {
+  border-color: rgba(201,154,59,0.5);
+  background:linear-gradient(135deg, rgba(201,154,59,0.25), rgba(255,217,122,0.08));
+}
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.logo-placeholder {
+  font-family:'Playfair Display', serif;
+  font-size:20px;
+  letter-spacing:0.8px;
+  color:var(--accent-2);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+.upload-overlay {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: var(--accent);
+  border-radius: 30px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid var(--bg-1);
+  font-size: 12px;
+  font-weight: bold;
+  color: #0a0a0a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: transform 0.1s;
+}
+.upload-overlay:hover {
+  transform: scale(1.05);
+  background: var(--accent-2);
+}
+.brand-text {
+  line-height: 1.2;
+}
+.logo-text{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  letter-spacing:0.8px;
+  color:var(--accent-2);
+  font-weight: 700;
+}
+.nav{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:10px 12px;
+  border-radius:10px;
+  font-weight:600;
+}
+.nav a:hover{ color: #fff; background: rgba(255,255,255,0.03) }
+.cta-join{
+  background:linear-gradient(90deg,var(--accent), #e0b86a);
+  border:none;
+  color:#081014;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(201,154,59,0.12);
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:32px;
+  align-items:center;
+  padding:48px 0 72px;
+}
+.hero-left{
+  padding:12px 0 12px 6px;
+}
+.kicker{
+  display:inline-block;
+  background: rgba(255,85,0,0.14);
+  color: #ffb378;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:0.8px;
+  margin-bottom:20px;
+  border:1px solid rgba(255,85,0,0.2);
+}
+.hero-title{
+  font-family:'Playfair Display', serif;
+  font-size:52px;
+  margin:8px 0 16px;
+  color:var(--text);
+  line-height:1.04;
+  text-shadow:0 18px 60px rgba(0,0,0,0.45);
+}
+.hero-sub{
+  color:var(--muted);
+  font-size:17px;
+  max-width:620px;
+  margin-bottom:28px;
+}
+.hero-ctas{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  align-items:center;
+}
+.btn {
+  position: relative;
+  overflow: hidden;
+  background:rgba(255,255,255,0.04);
+  border-radius:14px;
+  padding:14px 22px;
+  cursor:pointer;
+  font-weight:700;
+  border:1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  transition: all 0.25s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow:0 18px 40px rgba(255,85,0,0.12);
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,85,0,0);
+  border-radius: 14px;
+  transition: background 0.2s ease;
+  z-index: -1;
+}
+.btn:not(.btn-primary):active::after {
+  animation: redClickFlash 0.35s ease forwards;
+}
+
+@keyframes redClickFlash {
+  0% { background: rgba(255,88,88,0.25); }
+  50% { background: rgba(255,88,88,0.65); }
+  100% { background: rgba(255,85,0,0); }
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--accent), #ff7a33);
+  border:none;
+  color:#ffffff;
+  box-shadow:0 14px 40px rgba(255,85,0,0.28);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow:0 24px 48px rgba(255,85,0,0.35);
+}
+
+/* HERO RIGHT (image) */
+.hero-card{
+  background: rgba(255,255,255,0.05);
+  border-radius:var(--radius);
+  padding:22px;
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.35);
+}
+.hero-visual{
+  width:100%;
+  height:280px;
+  border-radius:20px;
+  overflow:hidden;
+  background-image: url('https://images.unsplash.com/photo-1554284126-aa88f22d8d27?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a7f7c0b0f9a9f55f3d1a9b9b6a6d1d6');
+  background-size:cover;
+  background-position:center;
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 18px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* PLANS SECTION */
+.section{
+  margin-top:40px;
+  padding:36px 0;
+}
+.section-h{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.section h2{
+  font-family:'Playfair Display', serif;
+  font-size:24px;
+  margin:0;
+}
+.plans{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
+  margin-top:18px;
+}
+.plan{
+  background: rgba(255,255,255,0.06);
+  border-radius:22px;
+  padding:26px;
+  border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.plan:hover{
+  transform:translateY(-10px);
+  box-shadow:0 32px 90px rgba(0,0,0,0.42);
+  border-color: rgba(255,255,255,0.18);
+}
+.plan h3{ margin:0 0 10px; font-size:20px; letter-spacing:0.2px; }
+.price{ font-size:22px; font-weight:800; color:var(--accent-2) }
+.features{ color:var(--muted); margin-top:14px; font-size:14px; min-height:68px; line-height:1.6; }
+.plan .badge{
+  display:inline-block;padding:7px 12px;border-radius:999px;font-weight:700;font-size:12px;
+  background: rgba(255,85,0,0.12);
+  color:var(--accent);
+  border:1px solid rgba(255,85,0,0.18);
+}
+.badge.red{
+  background:rgba(255,88,88,0.14);
+  color:var(--accent-red);
+  border-color:rgba(255,88,88,0.1);
+}
+.badge.green{
+  background:rgba(57,182,115,0.14);
+  color:var(--accent-green);
+  border-color:rgba(57,182,115,0.12);
+}
+.testimonial-card{
+  background:linear-gradient(180deg, rgba(74,163,255,0.08), rgba(37,95,201,0.08));
+  border:1px solid rgba(74,163,255,0.16);
+  box-shadow:0 12px 30px rgba(42,108,211,0.12);
+}
+.testimonial-card h3{
+  color:var(--accent-blue);
+}
+
+/* ALPHA HIGHLIGHT */
+.plan.alpha{
+  border:1px solid rgba(201,154,59,0.9);
+  box-shadow:0 24px 60px rgba(201,154,59,0.08);
+  background: linear-gradient(180deg, rgba(255,217,122,0.02), rgba(255,217,122,0.01));
+}
+.plan.alpha .price{ color:var(--accent) }
+
+/* TRANSFORMATION UPLOAD SECTION (antes / después) */
+.transform-card {
+  background: rgba(255,255,255,0.06);
+  border-radius:28px;
+  padding:32px 28px;
+  border:1px solid rgba(255,255,255,0.12);
+  margin: 20px 0 10px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.24);
+}
+.transform-title {
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  margin-bottom:14px;
+  text-align:center;
+}
+.transform-desc {
+  text-align:center;
+  color:var(--muted);
+  margin-bottom:28px;
+  font-size:15px;
+}
+.photo-upload-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.photo-card {
+  flex: 1;
+  min-width: 260px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 26px;
+  padding: 24px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.25s ease;
+  box-shadow: 0 18px 46px rgba(0,0,0,0.22);
+}
+.photo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 72px rgba(0,0,0,0.26);
+}
+.photo-card h3 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-2);
+}
+.photo-preview-area {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: rgba(255,255,255,0.04);
+  border-radius: 22px;
+  border: 2px dashed rgba(255,85,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 18px;
+  transition: 0.2s ease;
+}
+.photo-preview-area:hover {
+  border-color: rgba(255,85,0,0.4);
+  background: rgba(255,255,255,0.08);
+}
+.preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.preview-placeholder {
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+.upload-label-small {
+  background: rgba(255,85,0,0.12);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 8px;
+  text-align: center;
+}
+.clear-photo {
+  margin-top: 8px;
+  font-size: 11px;
+  background: none;
+  border: none;
+  color: #ff7e5e;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* FORM / REGISTER */
+.form-card{
+  background: rgba(255,255,255,0.06);
+  border-radius:24px;
+  padding:28px;
+  border:1px solid rgba(255,255,255,0.12);
+  width:100%;
+  max-width:560px;
+  box-shadow:0 22px 60px rgba(0,0,0,0.26);
+}
+.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px }
+.input, .select{
+  background: rgba(255,255,255,0.05);
+  border-radius:16px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,0.12);
+  color:#fff;
+}
+.input::placeholder{ color:rgba(255,255,255,0.6) }
+.full{ grid-column:1 / -1 }
+.small{ font-size:13px; color:var(--muted); margin-top:8px }
+
+/* FOOTER with correct email */
+.footer{
+  margin-top:60px;
+  padding:32px 0 24px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer-contact a {
+  color: #ffb77e;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-contact a:hover {
+  color: #fff;
+}
+.footer-social {
+  text-align: right;
+}
+.whatsapp-link {
+  background: linear-gradient(90deg, var(--accent), #ff7a33);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 18px 46px rgba(255,85,0,0.18);
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{
+  position:fixed; right:22px; bottom:22px;
+  background:linear-gradient(90deg,var(--accent), #ff7a33);
+  color:#fff; text-decoration:none;
+  width:56px; height:56px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:28px; font-weight:bold;
+  box-shadow:0 24px 60px rgba(255,85,0,0.32);
+  transition: transform 0.2s;
+  z-index: 100;
+}
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width:980px){
+  .hero{ grid-template-columns:1fr; }
+  .plans{ grid-template-columns:1fr; }
+  .nav{ display:none; }
+  .container{ padding:18px }
+  .footer { flex-direction: column; text-align: center; align-items: center; }
+  .footer-social { text-align: center; }
+  .photo-upload-grid { flex-direction: column; align-items: center; }
+}
+@media (max-width:560px){
+  .form-grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header" role="banner">
+    <a class="brand" href="#" style="text-decoration:none;">
+      <!-- Logo con upload centrado -->
+      <div class="logo-wrapper">
+        <div class="logo-wrap" id="logoClickZone" onclick="document.getElementById('brandLogoInput').click()">
+          <div id="logoDisplay" class="logo-placeholder">RA</div>
+          <img id="logoImageElem" class="logo-img" style="display:none;" alt="Logo">
+        </div>
+        <div class="upload-overlay" onclick="event.stopPropagation();document.getElementById('brandLogoInput').click()">✎</div>
+        <input id="brandLogoInput" type="file" accept="image/*" style="display:none" onchange="handleBrandLogo(event)">
+      </div>
+      <div class="brand-text">
+        <div class="logo-text">RICKY ALPHA TRAINING</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">Elite Fitness Coaching</div>
+      </div>
+    </a>
+
+    <nav class="nav" role="navigation" aria-label="Main">
+      <a href="#planes">Planes</a>
+      <a href="#transformacion">Mi Transformación</a>
+      <a href="#registro">Registro</a>
+      <a href="#testimonios">Testimonios</a>
+      <a class="cta-join" href="#registro">Únete</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left">
+        <div class="kicker">DISCIPLINA • PODER • RESULTADOS</div>
+        <h1 id="hero-heading" class="hero-title">Transforma tu cuerpo. Eleva tu vida.</h1>
+        <p class="hero-sub">Entrenamiento personalizado de élite, nutrición estratégica y coaching diario para resultados reales y sostenibles.</p>
+
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">QUIERO MI TRANSFORMACIÓN</button>
+          <button class="btn" onclick="window.open('https://wa.me/18099915586','_blank')">Hablar con coach</button>
+        </div>
+
+        <div style="margin-top:20px;color:var(--muted);font-size:13px">Planes desde $50/mes — Paquetes VIP y acceso limitado.</div>
+      </div>
+
+      <aside class="hero-card" aria-label="Imagen destacada">
+        <div class="hero-visual" role="img" aria-hidden="true"></div>
+        <div style="font-size:12px;color:var(--accent-2);text-align:center;">Resultados reales · Transformación garantizada</div>
+      </aside>
+    </section>
+
+    <!-- NUEVA SECCIÓN: ANTES Y DESPUÉS (fotos de transformación) -->
+    <section id="transformacion" class="section">
+      <div class="transform-card">
+        <div class="transform-title">📸 Documenta tu evolución</div>
+        <div class="transform-desc">Sube tus fotos "Antes" y "Después" — forma parte de nuestra comunidad de transformación real. Puedes actualizar tus imágenes cuando quieras.</div>
+        <div class="photo-upload-grid">
+          <!-- Foto Antes -->
+          <div class="photo-card">
+            <h3>⚫ ANTES</h3>
+            <div class="photo-preview-area" id="beforeZone" onclick="document.getElementById('beforePhotoInput').click()">
+              <img id="beforePreview" class="preview-img" alt="Before">
+              <div id="beforePlaceholder" class="preview-placeholder">📸 Haz clic para subir tu foto "Antes"<br><span style="font-size:12px;">JPG o PNG</span></div>
+            </div>
+            <input type="file" id="beforePhotoInput" accept="image/*" style="display:none" onchange="handleBeforePhoto(event)">
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:6px;">
+              <label class="upload-label-small" onclick="event.stopPropagation();document.getElementById('beforePhotoInput').click()">➕ Subir imagen</label>
+              <button class="clear-photo" onclick="clearPhoto('before')">🗑️ Quitar</button>
+            </div>
+          </div>
+          <!-- Foto Después -->
+          <div class="photo-card">
+            <h3>✨ DESPUÉS</h3>
+            <div class="photo-preview-area" id="afterZone" onclick="document.getElementById('afterPhotoInput').click()">
+              <img id="afterPreview" class="preview-img" alt="After">
+              <div id="afterPlaceholder" class="preview-placeholder">🏆 Sube tu foto "Después"<br><span style="font-size:12px;">Muestra tu progreso</span></div>
+            </div>
+            <input type="file" id="afterPhotoInput" accept="image/*" style="display:none" onchange="handleAfterPhoto(event)">
+            <div style="display:flex; justify-content:center; gap:12px; margin-top:6px;">
+              <label class="upload-label-small" onclick="event.stopPropagation();document.getElementById('afterPhotoInput').click()">➕ Subir imagen</label>
+              <button class="clear-photo" onclick="clearPhoto('after')">🗑️ Quitar</button>
+            </div>
+          </div>
+        </div>
+        <p style="text-align:center; font-size:12px; color:var(--muted); margin-top:20px;">* Tus fotos se guardan localmente y las compartirás con tu coach para seguimiento premium.</p>
+      </div>
+    </section>
+
+    <section id="planes" class="section" aria-labelledby="plans-heading">
+      <div class="section-h">
+        <h2 id="plans-heading">Planes Premium</h2>
+        <div style="color:var(--muted);font-size:14px">Selecciona tu nivel — soporte real y seguimiento</div>
+      </div>
+
+      <div class="plans" role="list">
+        <div class="plan" role="listitem" aria-label="Plan Básico">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Plan Básico</h3>
+            <div class="badge">Inicio</div>
+          </div>
+          <div class="price">$50 <span style="font-size:12px;color:var(--muted)">/mes</span></div>
+          <div class="features">
+            Rutina personalizada • Acceso a app • Soporte por email
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn" href="https://wa.me/18099915586?text=Interesado%20en%20Plan%20B%C3%A1sico" style="text-decoration:none">Empezar</a>
+          </div>
+        </div>
+
+        <div class="plan" role="listitem" aria-label="Plan Pro">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Plan Pro</h3>
+            <div class="badge">Más popular</div>
+          </div>
+          <div class="price">$150 <span style="font-size:12px;color:var(--muted)">/mes</span></div>
+          <div class="features">
+            Seguimiento semanal • Plan nutricional • Adjustes de progreso
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn" href="https://wa.me/18099915586?text=Interesado%20en%20Plan%20PRO" style="text-decoration:none">Empezar</a>
+          </div>
+        </div>
+
+        <div class="plan alpha" role="listitem" aria-label="Plan Alpha (destacado)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+            <h3>🔥 Plan Alpha</h3>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+              <div class="badge">Elite</div>
+              <div class="badge red">Oferta limitada</div>
+            </div>
+          </div>
+          <div class="price">$200 <span style="font-size:12px;color:var(--muted)">/mes</span></div>
+          <div class="features">
+            Coaching diario • Acceso VIP • Evaluación de rendimiento • Protocolos avanzados
+          </div>
+          <div style="margin-top:16px">
+            <a class="btn btn-primary" href="https://wa.me/18099915586?text=Interesado%20en%20Plan%20ALPHA" style="text-decoration:none">Quiero Alpha</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="registro" class="section" aria-labelledby="registro-heading">
+      <div class="section-h">
+        <h2 id="registro-heading">Empieza Hoy</h2>
+        <div style="color:var(--muted);font-size:14px">Rellena tus datos y te contactamos en menos de 24 horas.</div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start">
+        <form id="leadForm" class="form-card" onsubmit="handleSubmit(event)" aria-label="Formulario de registro">
+          <div class="form-grid">
+            <input class="input" id="nombre" name="nombre" required placeholder="Nombre">
+            <input class="input" id="apellido" name="apellido" required placeholder="Apellido">
+            <input class="input full" id="email" name="email" type="email" required placeholder="Correo electrónico">
+            <input class="input" id="telefono" name="telefono" type="tel" required placeholder="Teléfono">
+            <input class="input" id="edad" name="edad" type="number" min="10" max="120" placeholder="Edad">
+            <input class="input full" id="pais" name="pais" type="text" placeholder="País">
+            <input class="input full" id="trabajo" name="trabajo" type="text" placeholder="Actividad / trabajo">
+            <select class="select full" id="planSelect" name="plan">
+              <option value="basico">Plan Básico</option>
+              <option value="pro">Plan Pro</option>
+              <option value="alpha">Plan Alpha</option>
+            </select>
+            <textarea class="input full" id="comentario" name="comentario" rows="4" placeholder="Objetivos / contraindicaciones (opcional)"></textarea>
+            <div id="healthFields" class="full" style="display:none;flex-direction:column;gap:12px;">
+              <div class="form-grid">
+                <input class="input" id="altura" name="altura" type="text" placeholder="Altura (cm)">
+                <input class="input" id="peso" name="peso" type="text" placeholder="Peso (kg)">
+              </div>
+              <textarea class="input full" id="condiciones" name="condiciones" rows="3" placeholder="Condiciones médicas relevantes (opcional)"></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:14px;align-items:center;flex-wrap:wrap;">
+            <button type="button" class="btn" onclick="toggleHealthFields()">Registrar datos de salud</button>
+            <button type="submit" class="btn btn-primary">Aplicar ahora</button>
+            <button type="button" class="btn" onclick="window.open('https://wa.me/18099915586','_blank')">Contactar por WhatsApp</button>
+            <div class="small">Protegemos tus datos — respuesta en 24h</div>
+          </div>
+        </form>
+
+        <div style="flex:1; min-width:260px; max-width:420px;">
+          <div class="form-card" style="display:flex;flex-direction:column;gap:12px;">
+            <div style="font-weight:700;font-size:16px">¿Por qué elegir Ricky Alpha?</div>
+            <div style="color:var(--muted);font-size:14px">
+              Resultados comprobados, planes hechos a la medida y soporte directo con coaches certificados. Entrenamientos adaptados a tu ritmo y estilo de vida.
+            </div>
+            <ul style="color:var(--muted);margin:8px 0 0 16px;padding:0 0 0 6px">
+              <li>Protocolos científicos</li>
+              <li>Seguimiento y ajustes semanales</li>
+              <li>Énfasis en salud y estética</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonios" class="section" aria-labelledby="testimonios-heading">
+      <div class="section-h">
+        <h2 id="testimonios-heading">Testimonios</h2>
+        <div style="color:var(--muted);font-size:14px">Historias reales de transformación</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div class="plan testimonial-card" style="padding:18px" role="listitem">
+          <div class="badge green" style="margin-bottom:10px;">Bienestar</div>
+          <div style="font-weight:700">María G.</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:8px">-10 kg y fuerza que nunca tuve. Coaching impecable.</div>
+        </div>
+        <div class="plan testimonial-card" style="padding:18px" role="listitem">
+          <div style="font-weight:700">Carlos R.</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:8px">Redefiní mi físico en 12 semanas. Plan Alpha superó expectativas.</div>
+        </div>
+        <div class="plan testimonial-card" style="padding:18px" role="listitem">
+          <div style="font-weight:700">Ana Lucía</div>
+          <div style="color:var(--muted);font-size:14px;margin-top:8px">Disciplina y resultados únicos, seguimiento real.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER con email CORREGIDO y whatsapp -->
+  <footer class="footer">
+    <div class="footer-left">
+      <div class="logo-text" style="font-size:18px;">RICKY ALPHA TRAINING</div>
+      <div class="footer-contact">
+        <span>📞 WhatsApp: <a href="https://wa.me/18099915586" target="_blank">+1 809-991-5586</a></span>
+        <span>✉️ Email: <a href="mailto:rickyalphatraining@gmail.com">rickylphatraining@gmail.com</a></span>
+        <span style="font-size:12px;">© 2025 Elite Fitness Coaching — Transformación definitiva</span>
+      </div>
+    </div>
+    <div class="footer-social">
+      <a href="https://wa.me/18099915586" class="whatsapp-link" target="_blank">💬 Escríbenos directo</a>
+    </div>
+  </footer>
+</div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/18099915586" class="whatsapp-float" target="_blank" aria-label="WhatsApp">💬</a>
+
+<script>
+  // Brand logo upload (centrado)
+  function handleBrandLogo(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imgElement = document.getElementById('logoImageElem');
+        const placeholder = document.getElementById('logoDisplay');
+        imgElement.src = e.target.result;
+        imgElement.style.display = 'block';
+        placeholder.style.display = 'none';
+        localStorage.setItem('brandLogo', e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  // Antes y después (transformación)
+  function handleBeforePhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('beforePreview');
+        const placeholder = document.getElementById('beforePlaceholder');
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+        placeholder.style.display = 'none';
+        localStorage.setItem('fitnessBefore', e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  function handleAfterPhoto(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('afterPreview');
+        const placeholder = document.getElementById('afterPlaceholder');
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+        placeholder.style.display = 'none';
+        localStorage.setItem('fitnessAfter', e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  function clearPhoto(type) {
+    if (type === 'before') {
+      localStorage.removeItem('fitnessBefore');
+      document.getElementById('beforePreview').style.display = 'none';
+      document.getElementById('beforePlaceholder').style.display = 'flex';
+      document.getElementById('beforePhotoInput').value = '';
+    } else if (type === 'after') {
+      localStorage.removeItem('fitnessAfter');
+      document.getElementById('afterPreview').style.display = 'none';
+      document.getElementById('afterPlaceholder').style.display = 'flex';
+      document.getElementById('afterPhotoInput').value = '';
+    }
+  }
+  function loadStoredTransformations() {
+    const savedBefore = localStorage.getItem('fitnessBefore');
+    if (savedBefore) {
+      const preview = document.getElementById('beforePreview');
+      const placeholder = document.getElementById('beforePlaceholder');
+      preview.src = savedBefore;
+      preview.style.display = 'block';
+      placeholder.style.display = 'none';
+    }
+    const savedAfter = localStorage.getItem('fitnessAfter');
+    if (savedAfter) {
+      const preview = document.getElementById('afterPreview');
+      const placeholder = document.getElementById('afterPlaceholder');
+      preview.src = savedAfter;
+      preview.style.display = 'block';
+      placeholder.style.display = 'none';
+    }
+  }
+
+  // Form submit con email correcto y adjuntando info de fotos
+  function handleSubmit(event) {
+    event.preventDefault();
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const plan = document.getElementById('planSelect').value;
+    const edad = document.getElementById('edad').value.trim();
+    const pais = document.getElementById('pais').value.trim();
+    const trabajo = document.getElementById('trabajo').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+    const altura = document.getElementById('altura').value.trim();
+    const peso = document.getElementById('peso').value.trim();
+    const condiciones = document.getElementById('condiciones').value.trim();
+
+    const leadData = {
+      nombre,
+      apellido,
+      email,
+      telefono,
+      edad,
+      pais,
+      trabajo,
+      plan,
+      comentario,
+      altura,
+      peso,
+      condiciones,
+      beforePhoto: localStorage.getItem('fitnessBefore') || null,
+      afterPhoto: localStorage.getItem('fitnessAfter') || null,
+    };
+
+    console.log('Lead data enviado:', leadData);
+    alert('Gracias, hemos recibido tus datos. Te contactaremos pronto.');
+    document.getElementById('leadForm').reset();
+    document.getElementById('healthFields').style.display = 'none';
+  }
+</script>
+</body>
+</html>
