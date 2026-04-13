@@ -691,9 +691,9 @@ body::before{
             <input class="input" id="apellido" name="apellido" required placeholder="Apellido">
             <input class="input full" id="email" name="email" type="email" required placeholder="Correo electrónico">
             <input class="input" id="telefono" name="telefono" type="tel" required placeholder="Teléfono">
-            <input class="input" id="edad" name="edad" type="number" min="10" max="120" placeholder="Edad">
-            <input class="input full" id="pais" name="pais" type="text" placeholder="País">
-            <input class="input full" id="trabajo" name="trabajo" type="text" placeholder="Actividad / trabajo">
+            <input class="input" id="edad" name="edad" type="number" min="10" max="120" required placeholder="Edad (obligatorio)">
+            <input class="input full" id="pais" name="pais" type="text" required placeholder="País (obligatorio)">
+            <input class="input full" id="trabajo" name="trabajo" type="text" required placeholder="Actividad / trabajo (obligatorio)">
             <select class="select full" id="planSelect" name="plan" required>
               <option value="">Selecciona un plan</option>
               <option value="Plan Básico">Plan Básico</option>
@@ -909,7 +909,12 @@ body::before{
     const peso = document.getElementById('peso').value.trim();
     const condiciones = document.getElementById('condiciones').value.trim();
 
-    const message = `Nuevo cliente interesado en Ricky Alpha Training\n\nNombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nTeléfono: ${telefono}\nPlan: ${plan}\nEdad: ${edad || 'No indicado'}\nPaís: ${pais || 'No indicado'}\nTrabajo: ${trabajo || 'No indicado'}\nAltura: ${altura || 'No indicado'}\nPeso: ${peso || 'No indicado'}\nCondiciones: ${condiciones || 'No indicado'}\nComentario: ${comentario || 'No indicado'}`;
+    if (!plan) {
+      alert('Por favor selecciona un plan antes de enviar el formulario.');
+      document.getElementById('planSelect').focus();
+      return;
+    }
+    const message = `Nuevo cliente interesado en Ricky Alpha Training\n\nNombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nTeléfono: ${telefono}\nPlan: ${plan}\nEdad: ${edad}\nPaís: ${pais}\nTrabajo: ${trabajo}\nAltura: ${altura || 'No indicado'}\nPeso: ${peso || 'No indicado'}\nCondiciones: ${condiciones || 'No indicado'}\nComentario: ${comentario || 'No indicado'}`;
     const whatsappUrl = `https://wa.me/18099915586?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, '_blank');
@@ -922,6 +927,7 @@ body::before{
     const planSelect = document.getElementById('planSelect');
     if (planSelect) {
       planSelect.value = plan === 'basico' ? 'Plan Básico' : plan === 'pro' ? 'Plan Pro' : 'Plan Alpha';
+      planSelect.focus();
     }
     document.getElementById('registro').scrollIntoView({behavior:'smooth'});
   }
